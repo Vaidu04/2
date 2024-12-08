@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding:10px;
+            align-items: center;
+            justify-content: center;  
+            border-radius: 5px;
+            display: flex;
+            min-height: 100vh;
+            
+            /* justify-content: center; */
+        }
+        .container{
+            background: white; 
+            border-radius: 8px;
+            max-width: 500px;
+            width: 80%;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+          
+        }
+        h2{
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .div{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+
+        }
+        label{
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+           
+        }
+        input,textarea{
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+        }
+        textarea{
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        input:focus, textarea:focus{
+            outline: none;
+            border-color: #555;
+            box-shadow:  0 5px rgba(76, 175, 80, 0.5);
+        }
+        .row{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .div6{
+            text-align: right;
+           margin: 20px;
+        }
+        button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 668px) {
+    .container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input, textarea {
+        font-size: 14px;
+    }
+}
+
+           
+
+           
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Job Application</h2>
+        <form action="" id="jobApplicationForm">
+            <div class="row">
+        <div class="div">
+            <label for="">First Name</label>
+            <input type="text" name="Name" id="firstName" placeholder="Enter Your First Name">
+        </div>
+
+       <div class="div">
+        <label for="">Last Name</label>
+        <input type="text" name="LName" id="lastName" placeholder="Enter Your Last Name">
+       </div>
+    </div>
+
+    
+    <div class="row">
+       <div class="div">
+        <label for="">EmailId</label>
+        <input type="email" id="email" name="Email" placeholder="Enter EmailId">
+       </div>
+
+       <div class="div">
+        <label for="">Mobile No:</label>
+        <input type="mobile" name="Mobile" id="mobile" placeholder="Enter Mobile No.">
+       </div>
+
+    </div>
+
+       <div class="div">
+        <label for="">Description</label>
+        <textarea name="" id="description" placeholder="Enter Description"></textarea>
+       </div>
+
+       <div class="div6">
+        <button id="applyButton">Apply</button>
+       </div>
+    </form>
+
+
+    </div>
+    <script>
+        document.getElementById('applyButton').addEventListener('click', function(){
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
+            const description = document.getElementById('description').value.trim();
+
+            if(!firstName){
+                alert('first Name is required');
+            }
+
+            if(!lastName){
+                alert('last Name is required');
+            }
+
+            if(!email || !validateEmail(email)){
+                alert('valid Email ID is required');
+            }
+
+            if(!mobile || !validateMobile(mobile)){
+                alert('valid mobile number is required');
+            }
+
+            if(!description){
+                alert('description is required');
+            }
+
+            const formData={
+                firstName,
+                lastName,
+                email,
+                mobile,
+                description
+            };
+
+            localStorage.setItem('jobApplication',JSON.stringify(formData));
+
+            alert('Application submitted sucessfully!');
+            console.log('stored Data:', formData);
+
+            document.getElementById('jobApplicationForm').reset();
+        });
+
+        function validateEmail(email){
+            const emailPattern =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+        function validateMobile(mobile) {
+        const mobilePattern = /^[0-9]{10}$/;
+        return mobilePattern.test(mobile);
+    }
+    </script>
+    
+</body>
+</html>

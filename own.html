@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+        min-height: 100vh;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        width: 80%;
+        border-radius: 8px;
+        /* display: flex; */
+        max-width: 500px;
+        padding: 20px;
+        justify-content: space-between;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      h2 {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 10px;
+      }
+      label {
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #555;
+      }
+      .div {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+      }
+      input,
+      textarea {
+        padding: 10px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        border-radius: 5px;
+        width: 100%;
+      }
+      textarea {
+        min-height: 80%;
+        resize: vertical;
+      }
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #555;
+        box-shadow: 0 5px rgba(76, 175, 80, 0.5);
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .div2 {
+        width: 100%;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+      }
+      .div1 {
+        text-align: right;
+        margin: 20px;
+      }
+      button {
+        width: 80px;
+        padding: 8px 16px;
+        color: white;
+
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 5px;
+        background-color: #4caf50;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #4caf49;
+      }
+      @media (max-width: 668px) {
+        .container {
+          padding: 15px;
+        }
+        h2 {
+          font-size: 20px;
+        }
+        input,
+        textarea {
+          font-size: 14px;
+        }
+      }
+    </style>
+
+    <div class="container">
+      <h2>Job Application</h2>
+      <form action="" method="post" id="jobApplicationForm">
+        <div class="row">
+          <div class="div">
+            <label for="">First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              placeholder="Enter your firstname"
+            />
+          </div>
+
+          <div class="div">
+            <label for="">Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              placeholder="Enter your lastname"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="div">
+            <label for="">EmailId</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter EmailId"
+            />
+          </div>
+
+          <div class="div">
+            <label for="">Mobile No:</label>
+            <input
+              type="text"
+              name="mobile"
+              id="mobile"
+              placeholder="Enter mobile No:"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="div2">
+            <label for="">Description</label>
+            <textarea
+              name="description"
+              id="description"
+              placeholder="enter description"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="div1">
+          <button id="applyButton">Apply</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("applyButton")
+        .addEventListener("click", function () {
+          const lastName = document.getElementById("lasttName").value.trim();
+          const firstName = document.getElementById("firstName").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const mobile = document.getElementById("mobile").value.trim();
+          const description = document
+            .getElementById("description")
+            .value.trim();
+
+          if (!firstName) {
+            alert("firstname is required");
+          }
+
+          if (!lastName) {
+            alert("firstname is required");
+          }
+
+          if (!email || !validateemail(email)) {
+            alert("firstname is required");
+          }
+
+          if (!mobile || !validatemobile(mobile)) {
+            alert("firstname is required");
+          }
+
+          if (!description) {
+            alert("firstname is required");
+          }
+        });
+    </script>
+  </body>
+</html>
+l
